@@ -36,16 +36,16 @@
 <body>
 
 <?php
-// Controleren of het formulier is verzonden
+// Controleer of het formulier is verzonden
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    // Gegevens ophalen
-    $naam = $_GET["naam"];
-    $achternaam = $_GET["achternaam"];
-    $leeftijd = $_GET["leeftijd"];
-    $adres = $_GET["adres"];
-    $email = $_GET["email"];
+    // Haal de ingevoerde gegevens op
+    $naam = isset($_GET["naam"]) ? $_GET["naam"] : "";
+    $achternaam = isset($_GET["achternaam"]) ? $_GET["achternaam"] : "";
+    $leeftijd = isset($_GET["leeftijd"]) ? $_GET["leeftijd"] : "";
+    $adres = isset($_GET["adres"]) ? $_GET["adres"] : "";
+    $email = isset($_GET["email"]) ? $_GET["email"] : "";
 
-    // Gegevens weergeven
+    // Toon de ingevoerde gegevens op de pagina
     echo "<h2>Ingevoerde Gegevens:</h2>";
     echo "<p><strong>Naam:</strong> $naam</p>";
     echo "<p><strong>Achternaam:</strong> $achternaam</p>";
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 }
 ?>
 
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="get">
+<form method="get">
     <label for="naam">Naam:</label>
     <input type="text" id="naam" name="naam" required>
 
